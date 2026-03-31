@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://65cw13dxjnm2"]
+
+[ext_resource type="Script" uid="uid://b05e3c3ety4ox" path="res://join_lobby_menu.gd" id="1_tasgc"]
+
+[node name="JoinLobbyMenu" type="Control" unique_id=1094174899]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tasgc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1113910107]
+custom_minimum_size = Vector2(400, 500)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.0
+offset_top = -35.0
+offset_right = 34.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LobbyList" type="ItemList" parent="VBoxContainer" unique_id=1039296966]
+layout_mode = 2
+
+[node name="PasswordInput" type="LineEdit" parent="VBoxContainer" unique_id=138375752]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="Join" type="Button" parent="VBoxContainer" unique_id=935732903]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Join"
+
+[node name="Back" type="Button" parent="VBoxContainer" unique_id=415588174]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Back"
+
+[connection signal="pressed" from="VBoxContainer/Back" to="." method="_on_back_pressed"]

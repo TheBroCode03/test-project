@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://bxa2ou1e80ac8"]
+
+[ext_resource type="Script" uid="uid://qfco5fogsm75" path="res://ui/slot_ui.gd" id="1_nfd3l"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vlebx"]
+bg_color = Color(0.15294118, 0.15294118, 0.15294118, 0.49803922)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.1492097, 0.1492097, 0.1492097, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="SlotUI" type="PanelContainer" unique_id=852938109]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1088.0
+offset_bottom = -584.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vlebx")
+script = ExtResource("1_nfd3l")
+
+[node name="Label" type="Label" parent="." unique_id=541845047]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 16
+text = "99"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1366636154]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="Icon" type="TextureRect" parent="MarginContainer" unique_id=494752110]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5

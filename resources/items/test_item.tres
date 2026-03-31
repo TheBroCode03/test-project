@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://c12i46er4ftfq"]
+
+[ext_resource type="Script" uid="uid://cnmj53p4fel25" path="res://scripts/inventory/item_data.gd" id="1_psov8"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bppqf"]
+load_path = "res://.godot/imported/#1 - Transparent Icons.png-dfa6fddb7a894949f22a37de5db3b73e.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bif4y"]
+atlas = SubResource("CompressedTexture2D_bppqf")
+region = Rect2(32, 448, 32, 32)
+
+[resource]
+script = ExtResource("1_psov8")
+name = "Bonono"
+icon = SubResource("AtlasTexture_bif4y")
+metadata/_custom_type_script = "uid://cnmj53p4fel25"

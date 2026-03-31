@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://12rf2e0exefa"]
+
+[ext_resource type="Script" uid="uid://c8rit42pbtxr5" path="res://host_lobby_menu.gd" id="1_3aiud"]
+
+[node name="HostLobbyMenu" type="Control" unique_id=631794803]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3aiud")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=100761436]
+custom_minimum_size = Vector2(400, 320)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -67.0
+offset_top = -76.0
+offset_right = 67.0
+offset_bottom = 76.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer" unique_id=1718197886]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/CenterContainer" unique_id=153910786]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer" unique_id=2105382020]
+layout_mode = 2
+text = "Create Lobby"
+
+[node name="LobbyNameInput" type="LineEdit" parent="PanelContainer/CenterContainer/VBoxContainer" unique_id=1802359634]
+layout_mode = 2
+placeholder_text = "Lobby Name"
+
+[node name="PasswordInput" type="LineEdit" parent="PanelContainer/CenterContainer/VBoxContainer" unique_id=1323439754]
+layout_mode = 2
+placeholder_text = "Password (optional)"
+
+[node name="Status" type="CheckBox" parent="PanelContainer/CenterContainer/VBoxContainer" unique_id=1047427794]
+layout_mode = 2
+text = "Private"
+
+[node name="Create" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer" unique_id=1477461884]
+layout_mode = 2
+text = "Create"
+
+[node name="Back" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer" unique_id=853183475]
+layout_mode = 2
+text = "Back"
+
+[connection signal="toggled" from="PanelContainer/CenterContainer/VBoxContainer/Status" to="." method="_on_private_toggled"]
+[connection signal="toggled" from="PanelContainer/CenterContainer/VBoxContainer/Status" to="." method="_on_status_toggled"]
+[connection signal="pressed" from="PanelContainer/CenterContainer/VBoxContainer/Create" to="." method="_on_create_pressed"]
+[connection signal="pressed" from="PanelContainer/CenterContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]

@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://du2g430hqsqag"]
+
+[ext_resource type="Script" uid="uid://fmnm3cov37w3" path="res://scripts/player/player.gd" id="1_3vyb7"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g2els"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_qhqgy"]
+
+[node name="Player" type="CharacterBody3D" unique_id=24441782]
+script = ExtResource("1_3vyb7")
+speed = null
+mouse_sensitivity = null
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=243386806]
+shape = SubResource("CapsuleShape3D_g2els")
+
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=1523951197]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5428871, 0)
+target_position = Vector3(0, 0, -3)
+collide_with_areas = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1120146794]
+mesh = SubResource("CapsuleMesh_qhqgy")
+
+[node name="CameraPivot" type="Node3D" parent="." unique_id=55424327]
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=148134689]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46905106, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=214682947]
+
+[node name="InventoryInterface" type="Control" parent="CanvasLayer" unique_id=1650242414]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PlayerInventory" type="PanelContainer" parent="CanvasLayer/InventoryInterface" unique_id=108560733]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 50.0
+offset_bottom = 50.0

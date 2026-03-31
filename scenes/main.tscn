@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://dqwk6yccexs1o"]
+
+[ext_resource type="Script" uid="uid://bfx0mosskstmi" path="res://scenes/main.gd" id="1_jyhfs"]
+[ext_resource type="Script" uid="uid://cdlyu2ngfubm2" path="res://scripts/network/multiplayer_manager.gd" id="2_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://c80wlrjfde1mf" path="res://scenes/hotbar_ui.tscn" id="3_tefeu"]
+[ext_resource type="PackedScene" uid="uid://c40qxkuuht54g" path="res://scenes/inventory_ui.tscn.tscn" id="4_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://cbk6dfldu3sbl" path="res://scenes/main_menu.tscn" id="5_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://12rf2e0exefa" path="res://scripts/network/HostLobbyMenu.tscn" id="6_o6xl0"]
+[ext_resource type="Texture2D" uid="uid://tdbb7qy2whuo" path="res://Textures/kenney_prototype-textures/PNG/Orange/texture_08.png" id="6_tefeu"]
+[ext_resource type="PackedScene" uid="uid://65cw13dxjnm2" path="res://scripts/network/JoinLobbyMenu.tscn" id="7_tipki"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tipki"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_85g3d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o6xl0"]
+albedo_texture = ExtResource("6_tefeu")
+uv1_scale = Vector3(40, 40, 40)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tbgi4"]
+
+[sub_resource type="Sky" id="Sky_tefeu"]
+sky_material = SubResource("ProceduralSkyMaterial_tbgi4")
+
+[sub_resource type="Environment" id="Environment_o6xl0"]
+background_mode = 2
+sky = SubResource("Sky_tefeu")
+
+[node name="Main" type="Node3D" unique_id=681437647]
+script = ExtResource("1_jyhfs")
+
+[node name="MultiplayerManager" type="Node" parent="." unique_id=1087283577]
+script = ExtResource("2_tbgi4")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=2075105207]
+
+[node name="ColorRect" type="ColorRect" parent="UI" unique_id=1988830100]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.6431373)
+
+[node name="HotbarUI" parent="UI" unique_id=556581948 instance=ExtResource("3_tefeu")]
+visible = false
+
+[node name="InventoryUI" parent="UI" unique_id=2016791119 instance=ExtResource("4_o6xl0")]
+visible = false
+
+[node name="MainMenu" parent="UI" unique_id=878356725 instance=ExtResource("5_tbgi4")]
+
+[node name="HostIPLabel" type="Label" parent="UI" unique_id=34554327]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -72.0
+offset_bottom = 32.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 18
+text = "Your IP: "
+horizontal_alignment = 1
+
+[node name="HostLobbyMenu" parent="UI" unique_id=631794803 instance=ExtResource("6_o6xl0")]
+visible = false
+
+[node name="JoinLobbyMenu" parent="UI" unique_id=1094174899 instance=ExtResource("7_tipki")]
+visible = false
+
+[node name="World" type="Node3D" parent="." unique_id=565139142]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World" unique_id=1263855969]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/StaticBody3D" unique_id=1598940530]
+transform = Transform3D(80, 0, 0, 0, 1, 0, 0, 0, 80, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_tipki")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/StaticBody3D" unique_id=73727758]
+transform = Transform3D(40, 0, 0, 0, 40, 0, 0, 0, 40, 0, 0, 0)
+mesh = SubResource("PlaneMesh_85g3d")
+surface_material_override/0 = SubResource("StandardMaterial3D_o6xl0")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="World" unique_id=1686431889]
+environment = SubResource("Environment_o6xl0")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="World" unique_id=83144648]
+transform = Transform3D(0.02249536, 0.99974704, 0, 0.03157726, -0.00071051973, 0.99950117, 0.9992481, -0.022484133, -0.03158525, 0, 24.76577, 0)
+
+[node name="Players" type="Node3D" parent="." unique_id=22176529]
