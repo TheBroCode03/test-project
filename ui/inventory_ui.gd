@@ -27,7 +27,7 @@ func close():
 	
 func _input(event):
 	if event.is_action_pressed("ui_inventory"):
-		$"/root/Main/UI/InventoryUI".visible = !visible
+		$".".visible = !visible
 		
 func setup_slots(count: int):
 	for i in range(count):

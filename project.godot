@@ -17,6 +17,7 @@ config/features=PackedStringArray("4.6", "Forward Plus")
 [autoload]
 
 LobbyRegistry="*uid://cdm53w5aheopv"
+LanDiscovery="*uid://b1utgytgnludn"
 
 [display]
 

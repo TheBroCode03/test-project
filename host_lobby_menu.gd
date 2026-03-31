@@ -8,8 +8,6 @@ extends Control
 
 @onready var main_menu: Control = $"../MainMenu"
 @onready var host_lobby_menu: Control = $"."
-@onready var host_ip_label: Label = $"../HostIPLabel"
-@onready var color_rect: ColorRect = $"../ColorRect"
 
 
 signal create_lobby(name, password, is_private)
@@ -24,10 +22,9 @@ func _on_create_pressed():
 		return
 	
 	create_lobby.emit(lobby_name, password, status)
-	host_ip_label.visible = true
-	color_rect.visible = true
 	main_menu.visible = false
-	
+	print("Lobby: " + lobby_name)
+	print("Lobby: " + password)
 
 
 

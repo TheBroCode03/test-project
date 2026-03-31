@@ -1,12 +1,14 @@
 extends CharacterBody3D
 
 @export var speed := 6.0
-@export var mouse_sensitivity := 0.002
+@export var mouse_sensitivity := 0.01
 @export var inventory: InventoryData
 
 @onready var camera_pivot = $CameraPivot
 @onready var camera = $CameraPivot/Camera3D
 @onready var raycast = $RayCast3D
+@onready var host_ip_label: Label = $UI/HostIPLabel
+
 
 var selected_slot := 0
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -19,8 +21,8 @@ func _ready():
 		camera.current = false
 		set_process_input(false)
 	if is_multiplayer_authority():
-		var ui = get_tree().get_root().get_node("Main/UI/InventoryUI")
-		ui.set_player(self)
+		camera.current = true
+		host_ip_label.visible = true
 # =====================
 # LOOK
 # =====================

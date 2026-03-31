@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://du2g430hqsqag"]
 
 [ext_resource type="Script" uid="uid://fmnm3cov37w3" path="res://scripts/player/player.gd" id="1_3vyb7"]
+[ext_resource type="PackedScene" uid="uid://c80wlrjfde1mf" path="res://scenes/hotbar_ui.tscn" id="2_qhqgy"]
+[ext_resource type="PackedScene" uid="uid://c40qxkuuht54g" path="res://scenes/inventory_ui.tscn.tscn" id="3_dqkch"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g2els"]
 
@@ -8,8 +10,6 @@
 
 [node name="Player" type="CharacterBody3D" unique_id=24441782]
 script = ExtResource("1_3vyb7")
-speed = null
-mouse_sensitivity = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=243386806]
 shape = SubResource("CapsuleShape3D_g2els")
@@ -26,18 +26,40 @@ mesh = SubResource("CapsuleMesh_qhqgy")
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=148134689]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46905106, 0)
+current = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=214682947]
+[node name="UI" type="CanvasLayer" parent="." unique_id=1929143970]
 
-[node name="InventoryInterface" type="Control" parent="CanvasLayer" unique_id=1650242414]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="ColorRect" type="ColorRect" parent="UI" unique_id=275411201]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.6431373)
 
-[node name="PlayerInventory" type="PanelContainer" parent="CanvasLayer/InventoryInterface" unique_id=108560733]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 50.0
-offset_bottom = 50.0
+[node name="HotbarUI" parent="UI" unique_id=556581948 instance=ExtResource("2_qhqgy")]
+visible = false
+
+[node name="InventoryUI" parent="UI" unique_id=2016791119 instance=ExtResource("3_dqkch")]
+visible = false
+
+[node name="HostIPLabel" type="Label" parent="UI" unique_id=644824873]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -72.0
+offset_bottom = 32.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 18
+text = "Your IP: "
+horizontal_alignment = 1

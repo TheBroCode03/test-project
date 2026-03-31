@@ -43,4 +43,5 @@ layout_mode = 2
 size_flags_vertical = 8
 text = "Back"
 
+[connection signal="pressed" from="VBoxContainer/Join" to="." method="_on_join_pressed"]
 [connection signal="pressed" from="VBoxContainer/Back" to="." method="_on_back_pressed"]

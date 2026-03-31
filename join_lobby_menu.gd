@@ -2,6 +2,40 @@ extends Control
 @onready var main_menu: Control = $"../MainMenu"
 @onready var join_lobby_menu: Control = $"."
 
+signal join_requested(ip)
+
+func _ready():
+	LanDiscovery.lobby_found.connect(_on_lobby_found)
+	print(LanDiscovery)
+
+func _on_lobby_found(lobby):
+	print("Found lobby:", lobby)
+
+	var button = Button.new()
+	button.text = lobby.name + " (" + lobby.ip + ")"
+	
+	button.pressed.connect(func():
+		join_lobby(lobby)
+	)
+	
+	$VBoxContainer.add_child(button)
+
+func join_lobby(lobby):
+	print("Joining:", lobby.ip)
+
+	var peer = ENetMultiplayerPeer.new()
+	var err = peer.create_client(lobby.ip, 9999)
+
+	if err != OK:
+		push_error("Failed to connect")
+		return
+
+	multiplayer.multiplayer_peer = peer
+
+	multiplayer.connected_to_server.connect(func():
+		print("Connected!")
+		join_requested.emit(lobby.ip)
+	)
 
 func refresh_lobbies():
 	var list = $LobbyList
